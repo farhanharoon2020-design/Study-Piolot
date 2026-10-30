@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses – StudyPilot</title>
+  <meta name="description" content="View and manage your courses on StudyPilot. Add new subjects, track exam dates, and organize your syllabus.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link active" data-page="courses.html" aria-label="My Courses" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link" data-page="materials.html" aria-label="Study Materials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link" data-page="ai-lab.html" aria-label="AI Study Lab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link" data-page="settings.html" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span class="topbar-workspace">My Courses</span>
+    </div>
+    <div class="topbar-right">
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header flex items-center justify-between">
+      <div>
+        <h1>My Courses</h1>
+        <p class="text-secondary text-sm">Organise your subjects, syllabi, study materials and study topics.</p>
+      </div>
+      <button id="add-course-btn" class="btn btn-primary" aria-label="Add course">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add course
+      </button>
+    </div>
+
+    <!-- Search bar (shown when there are courses) -->
+    <div id="courses-search-wrapper" class="search-bar-wrapper mb-20" style="display:none; max-width: 400px;">
+      <div class="search-input-wrap w-full" style="position:relative;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="courses-search" class="form-input" placeholder="Search courses by name or code…" style="padding-left:36px;" aria-label="Search courses">
+      </div>
+    </div>
+
+    <!-- Empty state (no courses at all) -->
+    <div id="courses-empty" class="empty-state" style="display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 48px 24px;">
+      <div aria-hidden="true">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <rect x="20" y="35" width="80" height="68" rx="8" fill="#EEE9FF"/>
+          <rect x="28" y="43" width="64" height="52" rx="6" fill="#D9D0FF"/>
+          <circle cx="60" cy="69" r="16" fill="#7548FF" opacity=".15"/>
+          <circle cx="60" cy="69" r="11" fill="#7548FF" opacity=".25"/>
+          <line x1="60" y1="63" x2="60" y2="75" stroke="#7548FF" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="54" y1="69" x2="66" y2="69" stroke="#7548FF" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M45 35 Q60 20 75 35" stroke="#9B7FFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h2>No courses yet</h2>
+      <p>Add your first course to begin organizing your syllabus, materials, and study plans.</p>
+      <button id="add-first-course-btn" class="btn btn-primary mt-16">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add your first course
+      </button>
+    </div>
+
+    <!-- Empty search state -->
+    <div id="courses-empty-search" class="empty-state" style="display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 40px 24px;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <h2>No matching courses</h2>
+      <p>No courses matched your search query. Try clearing the search bar or typing a different subject name.</p>
+    </div>
+
+    <!-- Course Cards Grid -->
+    <div id="courses-grid" class="course-cards-grid" style="display:none"></div>
+
+  </main>
+</div>
+
+<!-- ======== ADD / EDIT COURSE MODAL ======== -->
+<div id="course-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="course-modal-title">
+  <div class="modal" style="max-width: 500px;">
+    <div class="modal-header">
+      <div>
+        <h2 id="course-modal-title">Add course</h2>
+        <p id="course-modal-sub" class="text-sm text-secondary">Set up your course in a few simple steps.</p>
+      </div>
+      <button id="course-modal-close" class="modal-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <form id="course-form" novalidate>
+      <div class="modal-body">
+        <!-- Course Name -->
+        <div class="form-group">
+          <label class="form-label" for="course-name">Course name <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="course-name" class="form-input" placeholder="e.g. Data Structures & Algorithms" required>
+          <span id="course-name-error" class="field-error"></span>
+        </div>
+
+        <!-- Course Code -->
+        <div class="form-group">
+          <label class="form-label" for="course-code">Course code <span class="optional">(optional)</span></label>
+          <input type="text" id="course-code" class="form-input" placeholder="e.g. CS201">
+          <span id="course-code-error" class="field-error"></span>
+        </div>
+
+        <!-- Exam Date -->
+        <div class="form-group">
+          <label class="form-label" for="course-exam-date">Exam date <span class="optional">(optional)</span></label>
+          <input type="date" id="course-exam-date" class="form-input">
+          <span id="course-exam-date-error" class="field-error"></span>
+        </div>
+
+        <!-- Priority & Difficulty Grid -->
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="course-priority">Priority</label>
+            <select id="course-priority" class="form-select">
+              <option value="medium">Medium priority</option>
+              <option value="high">High priority</option>
+              <option value="low">Low priority</option>
+            </select>
+            <span id="course-priority-error" class="field-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="course-difficulty">Difficulty</label>
+            <select id="course-difficulty" class="form-select">
+              <option value="medium">Medium difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="hard">Hard</option>
+            </select>
+            <span id="course-difficulty-error" class="field-error"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="course-cancel-btn" class="btn btn-ghost">Cancel</button>
+        <button type="submit" id="course-submit-btn" class="btn btn-primary">Create course</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/courses.js"></script>
+</body>
+</html>

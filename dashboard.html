@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – StudyPilot</title>
+  <meta name="description" content="Your StudyPilot dashboard. Add courses, upload your syllabus and get started.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link" data-page="courses.html" aria-label="My Courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link" data-page="materials.html" aria-label="Study Materials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link" data-page="ai-lab.html" aria-label="AI Study Lab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link" data-page="settings.html" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="topbar-workspace">Your workspace</span>
+    </div>
+    <div class="topbar-right">
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="main-content">
+
+    <!-- Welcome banner -->
+    <div class="dash-banner">
+      <div class="dash-banner-text">
+        <h1>Welcome to StudyPilot</h1>
+        <p>Organise your courses. Upload your syllabus. Take the next step.</p>
+      </div>
+      <div class="dash-banner-img" aria-hidden="true">
+        <svg viewBox="0 0 200 160" fill="none">
+          <rect x="10" y="130" width="180" height="10" rx="5" fill="#C4B8FF" opacity=".5"/>
+          <rect x="20" y="88" width="55" height="44" rx="5" fill="#9B7FFF"/>
+          <rect x="23" y="75" width="49" height="15" rx="4" fill="#7548FF"/>
+          <rect x="16" y="100" width="64" height="12" rx="4" fill="#B8AAFF" opacity=".8"/>
+          <rect x="82" y="78" width="88" height="55" rx="6" fill="#E8E3FF"/>
+          <rect x="87" y="83" width="78" height="44" rx="4" fill="#D0C6FF"/>
+          <rect x="94" y="94" width="48" height="4" rx="2" fill="#7548FF" opacity=".45"/>
+          <rect x="94" y="102" width="35" height="4" rx="2" fill="#9B7FFF" opacity=".35"/>
+          <rect x="94" y="110" width="42" height="4" rx="2" fill="#9B7FFF" opacity=".3"/>
+          <rect x="76" y="132" width="98" height="8" rx="4" fill="#C4B8FF"/>
+          <rect x="158" y="108" width="22" height="24" rx="4" fill="#B8AAFF"/>
+          <rect x="161" y="104" width="16" height="6" rx="3" fill="#9B7FFF"/>
+          <path d="M169 104 Q166 91 158 81" stroke="#5A9E6F" stroke-width="2" stroke-linecap="round"/>
+          <path d="M169 104 Q172 90 180 80" stroke="#5A9E6F" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="156" cy="78" rx="8" ry="5" fill="#6BBF84" transform="rotate(-25 156 78)"/>
+          <ellipse cx="181" cy="77" rx="8" ry="5" fill="#5A9E6F" transform="rotate(20 181 77)"/>
+          <ellipse cx="168" cy="77" rx="6" ry="4" fill="#7DD98F"/>
+          <rect x="36" y="96" width="14" height="20" rx="3" fill="#C4B8FF"/>
+          <rect x="38" y="84" width="2.5" height="14" rx="1.25" fill="#7548FF"/>
+          <rect x="43" y="81" width="2.5" height="17" rx="1.25" fill="#9B7FFF"/>
+          <rect x="48" y="87" width="2.5" height="12" rx="1.25" fill="#B8AAFF"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Onboarding steps -->
+    <div class="onboarding-steps" aria-label="Getting started steps">
+      <div class="onboarding-step">
+        <div class="step-number pending" id="step-1-num" aria-label="Step 1">1</div>
+        <div class="step-text">
+          <strong>Add a course</strong>
+          <span>Give your subject a name</span>
+        </div>
+      </div>
+      <div class="onboarding-step">
+        <div class="step-number pending" id="step-2-num" aria-label="Step 2">2</div>
+        <div class="step-text">
+          <strong>Upload your syllabus</strong>
+          <span>Upload a PDF or paste text</span>
+        </div>
+      </div>
+      <div class="onboarding-step">
+        <div class="step-number pending" id="step-3-num" aria-label="Step 3">3</div>
+        <div class="step-text">
+          <strong>Review your topics</strong>
+          <span>Generate and edit your topic list</span>
+        </div>
+      </div>
+      <div class="onboarding-step">
+        <div class="step-number" style="background:#7548FF; color:#fff;" id="step-4-num" aria-label="Step 4">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+        </div>
+        <div class="step-text">
+          <strong>AI Study Lab</strong>
+          <a href="ai-lab.html" style="color:var(--primary); font-size:12px; font-weight:600;">Generate notes &amp; quizzes &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Courses + How it works -->
+    <div class="dash-grid">
+
+      <!-- Left: Courses -->
+      <section aria-label="My Courses">
+        <div class="flex items-center justify-between mb-16">
+          <h2 class="font-bold" style="font-size:18px">My Courses</h2>
+          <a href="courses.html" class="text-sm text-primary-color font-semibold">View all →</a>
+        </div>
+
+        <!-- Empty state -->
+        <div id="dash-courses-empty" class="empty-state" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md)">
+          <div aria-hidden="true">
+            <svg width="110" height="110" viewBox="0 0 120 120" fill="none">
+              <rect x="20" y="35" width="80" height="68" rx="8" fill="#EEE9FF"/>
+              <rect x="28" y="43" width="64" height="52" rx="6" fill="#D9D0FF"/>
+              <circle cx="60" cy="69" r="16" fill="#7548FF" opacity=".15"/>
+              <circle cx="60" cy="69" r="11" fill="#7548FF" opacity=".25"/>
+              <line x1="60" y1="63" x2="60" y2="75" stroke="#7548FF" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="54" y1="69" x2="66" y2="69" stroke="#7548FF" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M45 35 Q60 20 75 35" stroke="#9B7FFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M52 35 Q52 27 60 27 Q68 27 68 35" stroke="#B8AAFF" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h2>Your first course starts here</h2>
+          <p>Add any subject you are studying to keep everything in one place.</p>
+          <a href="courses.html" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add your first course
+          </a>
+        </div>
+
+        <!-- Courses grid (shown when courses exist) -->
+        <div id="dash-courses-grid" class="course-cards-grid" style="display:none"></div>
+      </section>
+
+      <!-- Right: How it works -->
+      <aside class="card how-it-works-panel" aria-label="How it works">
+        <h2 class="how-it-works">How it works</h2>
+        <div class="how-item">
+          <div class="how-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="how-text">
+            <strong>Create your course</strong>
+            <span>Give your subject a name.</span>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="how-text">
+            <strong>Keep notes and files together</strong>
+            <span>Upload your syllabus and any study materials.</span>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div class="how-text">
+            <strong>Turn your syllabus into topics</strong>
+            <span>Extract and organise topics so you can study with a clear plan.</span>
+          </div>
+        </div>
+        <div class="how-item">
+          <div class="how-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="how-text">
+            <strong>Start with a course</strong>
+            <span>Once you add a course, you can upload its syllabus and study materials.</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer banner -->
+    <div class="dash-footer-banner">
+      <div class="dash-footer-banner-text">
+        <strong>Built around what you study.</strong>
+        <p>Your courses, materials and upcoming exams will appear as you add them.</p>
+      </div>
+      <div class="dash-footer-banner-img" aria-hidden="true">
+        <svg viewBox="0 0 80 60" fill="none">
+          <rect x="5" y="40" width="70" height="6" rx="3" fill="#C4B8FF" opacity=".5"/>
+          <rect x="10" y="22" width="28" height="20" rx="4" fill="#9B7FFF"/>
+          <rect x="12" y="16" width="24" height="8" rx="3" fill="#7548FF"/>
+          <rect x="42" y="18" width="30" height="24" rx="4" fill="#E8E3FF"/>
+          <rect x="45" y="21" width="24" height="18" rx="3" fill="#D0C6FF"/>
+          <rect x="56" y="13" width="14" height="18" rx="3" fill="#B8AAFF"/>
+          <path d="M63 13 Q60 4 55 0" stroke="#5A9E6F" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="53" cy="-1" rx="5" ry="3" fill="#6BBF84" transform="rotate(-20 53 -1)"/>
+        </svg>
+      </div>
+      <span class="dash-footer-brand text-xs text-secondary" style="align-self:flex-end">StudyPilot &nbsp;·&nbsp; Your personal study workspace</span>
+    </div>
+
+  </main><!-- /main -->
+</div><!-- /app-shell -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

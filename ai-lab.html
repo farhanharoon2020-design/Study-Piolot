@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Lab — Notes &amp; Mock Quizzes | StudyPilot</title>
+  <meta name="description" content="Generate AI-powered study notes and test your knowledge with interactive mock quizzes using Google Gemini on StudyPilot.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    @media (max-width: 900px) {
+      #panel-notes > div { grid-template-columns: minmax(0, 1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" id="sidebar" aria-label="Main Navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link" data-page="courses.html" aria-label="My Courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link" data-page="materials.html" aria-label="Study Materials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link active" data-page="ai-lab.html" aria-label="AI Study Lab" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link" data-page="settings.html" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+      <span class="topbar-workspace">AI Study Lab</span>
+    </div>
+    <div class="topbar-right">
+      <button id="api-key-header-btn" class="btn btn-ghost btn-sm flex items-center gap-6" title="Check Gemini setup">
+        <span class="ai-status-dot" id="header-status-dot"></span>
+        <span id="header-status-text">Gemini AI</span>
+      </button>
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="ai-main">
+
+    <!-- Hero / Status Banner -->
+    <div class="card mb-24 ai-glow-card" style="padding: 24px 28px;">
+      <div class="flex items-center justify-between gap-16 flex-wrap">
+        <div>
+          <div class="flex items-center gap-10 mb-6">
+            <h1 style="font-size:24px; font-weight:800; color:#1E1B4B; margin:0">AI Study Lab</h1>
+            <span class="badge badge-ai">Google Gemini</span>
+          </div>
+          <p class="text-secondary text-sm" style="max-width:650px">
+            Generate revision notes and interactive quizzes from your uploaded PDF slides or pasted lesson text.
+          </p>
+        </div>
+        <div class="flex items-center gap-10">
+          <button id="configure-gemini-btn" class="btn btn-ghost btn-sm" style="border:1px solid #DDD6FE; background:#FFFFFF;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            AI Setup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode Tabs -->
+    <div class="tab-bar mb-24" role="tablist" aria-label="AI Modes">
+      <button class="tab-btn active" data-tab="notes" role="tab" aria-selected="true" id="tab-btn-notes">
+        📝 Generate Study Notes
+      </button>
+      <button class="tab-btn" data-tab="quiz" role="tab" aria-selected="false" id="tab-btn-quiz">
+        🎯 Interactive Mock Quiz
+      </button>
+      <button class="tab-btn" data-tab="history" role="tab" aria-selected="false" id="tab-btn-history">
+        📚 Saved Notes &amp; Scores
+      </button>
+    </div>
+
+    <!-- ========================================================
+         TAB 1: NOTES GENERATOR
+         ======================================================== -->
+    <div id="panel-notes" class="tab-panel active" role="tabpanel">
+      <div style="display:grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 24px; align-items: start;">
+        
+        <!-- Controls Column -->
+        <div class="card" style="padding: 24px;">
+          <h2 style="font-size:16px; margin-bottom:16px; color:#1E1B4B;">Note Configuration</h2>
+          
+          <div class="form-group">
+            <label class="form-label" for="notes-course-select">Select Course</label>
+            <select id="notes-course-select" class="form-select">
+              <option value="">-- Choose a course --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes-material-select">Uploaded Slides (PDF)</label>
+            <select id="notes-material-select" class="form-select">
+              <option value="">-- Choose a course first --</option>
+            </select>
+            <p class="text-xs text-secondary mt-6">Upload slides in Course Materials. Export PowerPoint as PDF first. Maximum AI file size: 10 MB.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes-topic-input">Topic / Subject Area</label>
+            <input type="text" id="notes-topic-input" class="form-input" placeholder="e.g. Dynamic Programming, Newton's Laws">
+            <div id="notes-topic-suggestions" class="flex flex-wrap gap-4 mt-6"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes-style-select">Format / Style</label>
+            <select id="notes-style-select" class="form-select">
+              <option value="comprehensive">Comprehensive Revision Notes</option>
+              <option value="cram">High-Yield Exam Cram Sheet</option>
+              <option value="deep">First-Principles Deep Dive</option>
+              <option value="flashcard">Quick Flashcard Q&amp;A Pairs</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes-context-input">Source Text / Additional Context</label>
+            <textarea id="notes-context-input" maxlength="20000" class="form-textarea" rows="3" placeholder="Paste lesson text here, or add context for the selected PDF..."></textarea>
+          </div>
+
+          <button id="generate-notes-btn" class="btn btn-ai w-full" style="justify-content:center; padding:12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+            Generate Study Notes
+          </button>
+          <p id="notes-error-message" class="text-sm mt-12" role="alert" style="color:var(--danger)" hidden></p>
+        </div>
+
+        <!-- Output Column -->
+        <div>
+          <!-- Placeholder State -->
+          <div id="notes-empty-state" class="card" style="text-align:center; padding: 60px 24px;">
+            <div style="width:64px; height:64px; margin:0 auto 16px; border-radius:50%; background:#F3E8FF; display:flex; align-items:center; justify-content:center; color:#7E22CE;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h2 style="font-size:18px; margin-bottom:8px;">Ready to Generate Notes</h2>
+            <p class="text-secondary text-sm" style="max-width:400px; margin:0 auto;">
+              Select a course and topic on the left to generate structured, exam-ready study notes powered by Google Gemini.
+            </p>
+          </div>
+
+          <!-- Loading State -->
+          <div id="notes-loading-state" class="card hidden" style="text-align:center; padding: 70px 24px;">
+            <div class="spinner" style="width:36px; height:36px; border-width:3px; margin:0 auto 18px; color:var(--primary)"></div>
+            <h2 style="font-size:17px; margin-bottom:6px;">Synthesizing Study Notes...</h2>
+            <p class="text-secondary text-sm">Reading your source and generating notes. This can take up to 90 seconds.</p>
+          </div>
+
+          <!-- Result View -->
+          <div id="notes-result-state" class="hidden">
+            <!-- Action Bar -->
+            <div class="flex items-center justify-between gap-12 mb-16 flex-wrap">
+              <div class="flex items-center gap-8">
+                <span id="notes-result-badge" class="badge badge-primary">Course</span>
+                <span id="notes-demo-notice" class="badge badge-warning hidden">Smart Demo Mode</span>
+              </div>
+              <div class="flex items-center gap-8">
+                <button id="copy-notes-btn" class="btn btn-ghost btn-sm" title="Copy Markdown to Clipboard">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  Copy
+                </button>
+                <button id="download-notes-btn" class="btn btn-ghost btn-sm" title="Download Text">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Export
+                </button>
+                <button id="save-notes-btn" class="btn btn-primary btn-sm">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                  Save Note
+                </button>
+                <button id="quiz-from-notes-btn" class="btn btn-ai btn-sm" title="Create a Quiz on this topic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Quiz This Topic
+                </button>
+              </div>
+            </div>
+
+            <!-- Notes Content -->
+            <div id="notes-content-viewer" class="notes-container"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 2: MOCK QUIZ ARENA
+         ======================================================== -->
+    <div id="panel-quiz" class="tab-panel" role="tabpanel" style="display:none;">
+      
+      <!-- Quiz Setup Screen -->
+      <div id="quiz-setup-screen" style="max-width: 680px; margin: 0 auto;">
+        <div class="card" style="padding: 32px;">
+          <div class="flex items-center gap-12 mb-16">
+            <div style="width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg, #7548FF, #A855F7); display:flex; align-items:center; justify-content:center; color:#fff;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </div>
+            <div>
+              <h2 style="font-size:18px; color:#1E1B4B; margin:0">Configure Mock Quiz</h2>
+              <p class="text-secondary text-xs">AI-generated multiple choice questions with instant explanations.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quiz-course-select">Select Course</label>
+            <select id="quiz-course-select" class="form-select">
+              <option value="">-- Choose a course --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quiz-material-select">Uploaded Slides (PDF)</label>
+            <select id="quiz-material-select" class="form-select">
+              <option value="">-- Choose a course first --</option>
+            </select>
+            <p class="text-xs text-secondary mt-6">Upload slides in Course Materials. Export PowerPoint as PDF first. Maximum AI file size: 10 MB.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quiz-topic-input">Quiz Topic / Keyword</label>
+            <input type="text" id="quiz-topic-input" class="form-input" placeholder="e.g. Asymptotic Complexity, Cell Mitosis">
+            <div id="quiz-topic-suggestions" class="flex flex-wrap gap-4 mt-6"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="quiz-context-input">Source Text (alternative to PDF)</label>
+            <textarea id="quiz-context-input" class="form-textarea" rows="4" maxlength="20000" placeholder="Paste lesson text to base questions on."></textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="quiz-count-select">Number of Questions</label>
+              <select id="quiz-count-select" class="form-select">
+                <option value="3">3 Questions (Quick Sprint)</option>
+                <option value="5" selected>5 Questions (Standard)</option>
+                <option value="10">10 Questions (Full Assessment)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="quiz-difficulty-select">Difficulty Level</label>
+              <select id="quiz-difficulty-select" class="form-select">
+                <option value="easy">Easy (Fundamentals)</option>
+                <option value="medium" selected>Medium (Application)</option>
+                <option value="hard">Hard (Tricky / Edge Cases)</option>
+                <option value="exam">Exam-Level (Multi-step)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Quiz Feedback Mode</label>
+            <div class="flex gap-16 mt-8">
+              <label class="flex items-center gap-6" style="cursor:pointer; font-size:13.5px;">
+                <input type="radio" name="quiz-mode" value="practice" checked>
+                <span><strong>Practice Mode:</strong> Instant feedback &amp; explanations after each question</span>
+              </label>
+            </div>
+          </div>
+
+          <button id="start-quiz-btn" class="btn btn-ai w-full mt-16" style="justify-content:center; padding:14px; font-size:15px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Generate &amp; Start Mock Quiz
+          </button>
+          <p id="quiz-error-message" class="text-sm mt-12" role="alert" style="color:var(--danger)" hidden></p>
+        </div>
+      </div>
+
+      <!-- Quiz Loading Screen -->
+      <div id="quiz-loading-screen" class="card hidden" style="max-width:540px; margin: 40px auto; text-align:center; padding: 60px 24px;">
+        <div class="spinner" style="width:40px; height:40px; border-width:3px; margin:0 auto 20px; color:var(--primary)"></div>
+        <h2 style="font-size:18px; margin-bottom:8px;">Generating Challenge Questions...</h2>
+        <p class="text-secondary text-sm">Formulating realistic distractor options and detailed answer rationales.</p>
+      </div>
+
+      <!-- Quiz Interactive Runner Screen -->
+      <div id="quiz-runner-screen" class="hidden" style="max-width: 740px; margin: 0 auto;">
+        
+        <div class="flex items-center justify-between mb-16">
+          <div class="flex items-center gap-10">
+            <span id="quiz-runner-badge" class="badge badge-primary">Course</span>
+            <span id="quiz-runner-topic" class="text-secondary text-sm font-semibold">Topic</span>
+          </div>
+          <button id="quiz-quit-btn" class="btn btn-ghost btn-sm" style="color:var(--text-secondary)">Exit Quiz</button>
+        </div>
+
+        <div class="quiz-runner-card">
+          <!-- Progress -->
+          <div class="flex items-center justify-between text-xs text-secondary mb-8">
+            <span id="quiz-question-counter">Question 1 of 5</span>
+            <span id="quiz-score-tracker">Score: 0</span>
+          </div>
+          <div class="quiz-progress-bar-bg">
+            <div id="quiz-progress-fill" class="quiz-progress-bar-fill" style="width: 20%;"></div>
+          </div>
+
+          <!-- Question Prompt -->
+          <h2 id="quiz-question-prompt" class="quiz-question-title">Question loading...</h2>
+
+          <!-- Options -->
+          <div id="quiz-options-container" class="quiz-options-grid"></div>
+
+          <!-- Hint Drawer -->
+          <div id="quiz-hint-box" class="mb-16 hidden">
+            <button id="quiz-hint-toggle" class="btn btn-ghost btn-sm text-xs flex items-center gap-6" style="padding:4px 8px; color:#6B21A8;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+              Show Hint
+            </button>
+            <div id="quiz-hint-text" class="card mt-8 hidden" style="background:#FAF5FF; border-color:#E9D5FF; padding:10px 14px; font-size:13px; color:#581C87;"></div>
+          </div>
+
+          <!-- Explanation Box -->
+          <div id="quiz-explanation-box" class="quiz-explanation-box hidden"></div>
+
+          <!-- Footer Actions -->
+          <div class="flex justify-between items-center mt-24">
+            <div></div>
+            <button id="quiz-next-btn" class="btn btn-primary" style="display:none;">
+              Next Question &rarr;
+            </button>
+            <button id="quiz-finish-btn" class="btn btn-ai" style="display:none;">
+              View Results &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Quiz Scorecard / Results Screen -->
+      <div id="quiz-results-screen" class="hidden" style="max-width: 720px; margin: 0 auto;">
+        <div class="card quiz-score-card">
+          <div class="quiz-score-circle">
+            <span id="results-score-percent" class="quiz-score-num">80%</span>
+            <span id="results-score-fraction" class="quiz-score-denom">4 / 5 Correct</span>
+          </div>
+
+          <h2 id="results-headline" style="font-size:22px; color:#1E1B4B; margin-bottom:8px;">Great Performance!</h2>
+          <p id="results-subtext" class="text-secondary text-sm mb-24" style="max-width:480px; margin-left:auto; margin-right:auto;">
+            You have a solid conceptual grasp on this topic. Review the question breakdown below.
+          </p>
+
+          <div class="flex items-center justify-center gap-12 flex-wrap mb-32">
+            <button id="quiz-retake-btn" class="btn btn-ghost">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Retake Quiz
+            </button>
+            <button id="quiz-save-score-btn" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Save to Scorecard History
+            </button>
+            <button id="quiz-notes-recommend-btn" class="btn btn-ai">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Generate Notes on This Topic
+            </button>
+          </div>
+
+          <!-- Question Breakdown Accordion -->
+          <div style="text-align:left; border-top:1px solid var(--border); padding-top:24px;">
+            <h3 style="font-size:16px; margin-bottom:16px; color:#1E1B4B;">Question Breakdown</h3>
+            <div id="results-breakdown-list" class="flex flex-col gap-12"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================================
+         TAB 3: SAVED NOTES & HISTORY
+         ======================================================== -->
+    <div id="panel-history" class="tab-panel" role="tabpanel" style="display:none;">
+      
+      <div class="flex items-center justify-between gap-16 mb-24 flex-wrap">
+        <div>
+          <h2 style="font-size:18px; margin:0">Saved AI Notes &amp; Past Quizzes</h2>
+          <p class="text-secondary text-xs">Review your saved notes or revisit your quiz attempt results.</p>
+        </div>
+        <div class="flex items-center gap-12">
+          <select id="history-course-filter" class="form-select" style="min-width:200px;">
+            <option value="">All Courses</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section: Saved Notes -->
+      <section class="mb-32">
+        <h3 class="flex items-center gap-8 mb-16" style="font-size:15px; color:#4338CA;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Saved Study Notes
+        </h3>
+        <div id="history-notes-grid" class="courses-grid">
+          <!-- Filled dynamically -->
+        </div>
+      </section>
+
+      <!-- Section: Past Quiz Scorecards -->
+      <section>
+        <h3 class="flex items-center gap-8 mb-16" style="font-size:15px; color:#4338CA;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Quiz Scorecards History
+        </h3>
+        <div id="history-quizzes-list" class="flex flex-col gap-12">
+          <!-- Filled dynamically -->
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+<!-- ========================================================
+     MODAL: GEMINI API KEY CONFIGURATION
+     ======================================================== -->
+<div id="gemini-key-modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="gemini-modal-title">
+  <div class="modal" style="max-width:520px;">
+    <div class="modal-header">
+      <div class="flex items-center gap-10">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+        <h2 id="gemini-modal-title" style="font-size:17px; margin:0">Gemini Setup</h2>
+      </div>
+      <button class="modal-close" id="gemini-modal-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="text-sm text-secondary mb-16">Sign in, choose a course, and select an uploaded PDF to generate notes or a quiz. You can also paste lesson text.</p>
+      <p class="text-sm text-secondary mb-16">Gemini is configured by the project owner in Supabase. Your browser does not need an AI API key.</p>
+      <p id="gemini-setup-status" role="status" class="text-sm">Checking setup...</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="gemini-test-btn">Check Setup</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     MODAL: VIEW SAVED NOTE
+     ======================================================== -->
+<div id="view-note-modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="view-note-title">
+  <div class="modal" style="max-width:760px; max-height:85vh; display:flex; flex-direction:column;">
+    <div class="modal-header">
+      <h2 id="view-note-title" style="font-size:17px; margin:0">Study Note</h2>
+      <button class="modal-close" id="view-note-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" style="overflow-y:auto; flex:1;">
+      <div id="view-note-body" class="notes-container" style="border:none; padding:10px 0; box-shadow:none;"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" id="view-note-copy">Copy Content</button>
+      <button class="btn btn-primary" id="view-note-done">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/supabase-config.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/common.js"></script>
+<script src="js/ai-service.js"></script>
+<script src="js/ai-lab.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Materials – StudyPilot</title>
+  <meta name="description" content="View and manage all your lecture slides, notes, and study resources across all courses in one central place.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link" data-page="courses.html" aria-label="My Courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link active" data-page="materials.html" aria-label="Study Materials" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link" data-page="ai-lab.html" aria-label="AI Study Lab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link" data-page="settings.html" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span class="topbar-workspace">Study Materials</span>
+    </div>
+    <div class="topbar-right">
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="main-content">
+
+    <!-- Header -->
+    <div class="page-header flex items-center justify-between">
+      <div>
+        <h1>Study Materials</h1>
+        <p class="text-secondary text-sm">All uploaded slides, notes, assignments and resources in one place.</p>
+      </div>
+      <button id="gm-upload-btn" class="btn btn-primary" aria-label="Upload materials">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Upload files
+      </button>
+    </div>
+
+    <!-- Toolbar: Search + Filter -->
+    <div id="gm-toolbar" class="flex items-center gap-16 mb-20 flex-wrap">
+      <div class="search-input-wrap" style="position:relative; flex:1; max-width:360px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="gm-search" class="form-input" placeholder="Search files by name…" style="padding-left:36px;" aria-label="Search files">
+      </div>
+      <div style="min-width: 200px;">
+        <select id="gm-course-filter" class="form-select" aria-label="Filter by course">
+          <option value="">All courses</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Empty state: No courses exist yet -->
+    <div id="gm-no-courses" class="empty-state" style="display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 48px 24px;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <h2>Add a course first</h2>
+      <p>Study materials must be attached to a course. Create your first course to begin uploading notes and slides.</p>
+      <a href="courses.html" class="btn btn-primary mt-16">Go to My Courses</a>
+    </div>
+
+    <!-- Empty state: No files found -->
+    <div id="gm-no-files" class="empty-state" style="display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 48px 24px;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <h2>No materials found</h2>
+      <p>No study files have been uploaded yet. Click Upload files above to add materials.</p>
+    </div>
+
+    <!-- Table of materials -->
+    <div id="gm-table-wrap" class="materials-table-wrap card" style="display:none; padding:0; overflow:hidden">
+      <table class="materials-table" aria-label="All study materials">
+        <thead>
+          <tr>
+            <th scope="col">File Name</th>
+            <th scope="col">Course</th>
+            <th scope="col">Size</th>
+            <th scope="col">Uploaded</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="gm-tbody"></tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- ======== GLOBAL UPLOAD MODAL ======== -->
+<div id="gm-upload-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="gm-upload-title">
+  <div class="modal" style="max-width: 520px;">
+    <div class="modal-header">
+      <div>
+        <h2 id="gm-upload-title">Upload study materials</h2>
+        <p class="text-sm text-secondary">Choose a course and select files to upload.</p>
+      </div>
+      <button id="gm-upload-modal-close" class="modal-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Target Course Selection -->
+      <div class="form-group">
+        <label class="form-label" for="gm-upload-course">Select course <span style="color:var(--danger)">*</span></label>
+        <select id="gm-upload-course" class="form-select" required>
+          <option value="">Select a course</option>
+        </select>
+      </div>
+
+      <!-- File Drop Zone -->
+      <div id="gm-drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Drop files here to upload">
+        <div class="drop-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <p><strong>Drag & drop files here</strong>, or <span class="text-primary-color font-semibold" id="gm-browse-btn" style="cursor:pointer">browse</span></p>
+        <div class="drop-zone-hint">PDF, DOCX, PPTX, TXT, images up to 50 MB each</div>
+        <input type="file" id="gm-file-input" multiple class="hidden" aria-label="Select files to upload">
+      </div>
+
+      <!-- Selected files preview -->
+      <ul id="gm-selected-files" class="mt-12" style="list-style:none; padding:0; margin:0; max-height:120px; overflow-y:auto" hidden></ul>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" id="gm-upload-cancel" class="btn btn-ghost">Cancel</button>
+      <button type="button" id="gm-upload-confirm" class="btn btn-primary">Upload files</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/global-materials.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+[functions.study_ai]
+# The handler verifies the user with Supabase Auth. This also supports
+# projects using the newer asymmetric JWT signing keys.
+verify_jwt = false

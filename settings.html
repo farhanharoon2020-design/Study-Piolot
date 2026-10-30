@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings – StudyPilot</title>
+  <meta name="description" content="Manage your student profile, study preferences, and local data settings in StudyPilot.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link" data-page="courses.html" aria-label="My Courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link" data-page="materials.html" aria-label="Study Materials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link" data-page="ai-lab.html" aria-label="AI Study Lab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link active" data-page="settings.html" aria-label="Settings" aria-current="page">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span class="topbar-workspace">Settings</span>
+    </div>
+    <div class="topbar-right">
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="main-content">
+
+    <!-- Settings Header / Banner -->
+    <div class="card mb-28" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); border-color: #DDD6FE; padding: 24px 28px;">
+      <div class="flex items-center justify-between gap-16 flex-wrap">
+        <div>
+          <div class="flex items-center gap-10 mb-6">
+            <h1 style="font-size:22px">Profile &amp; Study Settings</h1>
+            <span id="preview-mode-badge" class="badge badge-primary" hidden>Preview Workspace</span>
+          </div>
+          <p class="text-secondary text-sm">Configure your personal preferences, target schedule, and manage local data.</p>
+        </div>
+        <div class="profile-avatar" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Form -->
+    <form id="settings-form" novalidate>
+
+      <!-- Student Profile Section -->
+      <section class="card mb-24" aria-label="Student Profile">
+        <div class="settings-section" style="margin-bottom:0">
+          <h2>Student Information</h2>
+          <div class="settings-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="profile-name">Full name</label>
+              <input type="text" id="profile-name" class="form-input" placeholder="e.g. Alex Morgan">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="profile-email">Email address</label>
+              <input type="email" id="profile-email" class="form-input" readonly>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="profile-degree">Degree / Programme</label>
+              <input type="text" id="profile-degree" class="form-input" placeholder="e.g. BSc Computer Science">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="profile-semester">Current semester / term</label>
+              <input type="text" id="profile-semester" class="form-input" placeholder="e.g. Year 2, Semester 1">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Study Preferences Section -->
+      <section class="card mb-24" aria-label="Study Preferences">
+        <div class="settings-section" style="margin-bottom:0">
+          <h2>Study Preferences</h2>
+          <div class="settings-form-grid">
+            <div class="form-group">
+              <label class="form-label" for="study-time">Preferred study time</label>
+              <select id="study-time" class="form-select">
+                <option value="">No preference</option>
+                <option value="morning">Morning (08:00 – 12:00)</option>
+                <option value="afternoon">Afternoon (12:00 – 17:00)</option>
+                <option value="evening">Evening (17:00 – 21:00)</option>
+                <option value="night">Night (21:00+)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="study-duration">Target daily study session (minutes)</label>
+              <input type="number" id="study-duration" class="form-input" min="15" step="15" placeholder="e.g. 90">
+              <span id="study-duration-error" class="field-error"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Save Button -->
+      <div class="flex justify-between items-center mb-32">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </form>
+
+    <!-- Google Gemini AI Section -->
+    <section class="card mb-24 ai-glow-card" aria-label="Google Gemini AI Integration">
+      <div class="settings-section" style="margin-bottom:0">
+        <div class="flex items-center justify-between gap-12 flex-wrap mb-8">
+          <div class="flex items-center gap-8">
+            <h2 style="color:#7E22CE; border-color:#DDD6FE; margin-bottom:0">Google Gemini AI Integration</h2>
+            <span class="badge badge-ai">Gemini API</span>
+          </div>
+          <span id="gemini-settings-status" class="badge badge-warning">Checking setup...</span>
+        </div>
+        <p class="text-sm text-secondary mb-16">Create notes and quizzes from your uploaded PDF slides in the AI Study Lab. Gemini is configured on the Supabase server by the project owner.</p>
+        <p id="settings-ai-detail" class="text-sm text-secondary mb-16" role="status"></p>
+        <div class="flex items-center gap-10 flex-wrap">
+          <button type="button" id="settings-gemini-test-btn" class="btn btn-ghost btn-sm">Check AI Setup</button>
+          <a href="ai-lab.html" class="btn btn-primary btn-sm">Open AI Study Lab</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supabase Connection Section -->
+    <section class="card mb-24" aria-label="Supabase Cloud Sync" style="border-color:#C4B5FD; background:#FAF5FF;">
+      <div class="settings-section" style="margin-bottom:0">
+        <div class="flex items-center justify-between gap-12 flex-wrap mb-8">
+          <h2 style="color:#6D28D9; border-color:#DDD6FE; margin-bottom:0">Supabase Cloud Sync</h2>
+          <span id="supabase-settings-status" class="badge badge-primary">Checking...</span>
+        </div>
+        <p class="text-sm text-secondary mb-16">Connect your Supabase project to synchronize your courses, syllabi, topics, and study materials in real-time with PostgreSQL and Cloud Storage.</p>
+        <div class="account-actions">
+          <div>
+            <strong>Configure API Keys &amp; Database</strong>
+            <p class="text-xs text-secondary mt-4">Set your Supabase Project URL and Anon Key.</p>
+          </div>
+          <button type="button" id="supabase-config-btn" class="btn btn-primary btn-sm">
+            Configure Supabase
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace & Data Management Section -->
+    <section class="card" aria-label="Data Management" style="border-color:#FDE68A; background:#FFFDF5;">
+      <div class="settings-section" style="margin-bottom:0">
+        <h2 style="color:#92400E; border-color:#FDE68A">Workspace &amp; Data Management</h2>
+        <p class="text-sm text-secondary mb-20">Manage your local storage data or exit your current session.</p>
+
+        <div class="account-actions" id="auth-signout-row" style="display:none">
+          <div>
+            <strong>Sign out of account</strong>
+            <p class="text-xs text-secondary mt-4">End your authenticated Supabase session and return to sign in.</p>
+          </div>
+          <button type="button" id="auth-signout-btn" class="btn btn-ghost btn-sm">
+            Sign out
+          </button>
+        </div>
+
+        <hr id="auth-signout-hr" style="border:none; border-top:1px solid #FEF3C7; margin: 18px 0; display:none">
+
+        <div class="account-actions" id="exit-preview-row">
+          <div>
+            <strong>Exit preview workspace</strong>
+            <p class="text-xs text-secondary mt-4">Return to the sign-in screen without deleting your local test courses or data.</p>
+          </div>
+          <button type="button" id="exit-preview-btn" class="btn btn-ghost btn-sm">
+            Exit preview
+          </button>
+        </div>
+
+        <hr style="border:none; border-top:1px solid #FEF3C7; margin: 18px 0;">
+
+        <div class="account-actions">
+          <div>
+            <strong style="color:var(--danger)">Reset all local data</strong>
+            <p class="text-xs text-secondary mt-4">Permanently clear all courses, syllabi, materials, and settings stored in this browser.</p>
+          </div>
+          <button type="button" id="reset-data-btn" class="btn btn-ghost btn-sm" style="color:var(--danger); border-color:var(--danger)">
+            Reset everything
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/ai-service.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

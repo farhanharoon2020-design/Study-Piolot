@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details – StudyPilot</title>
+  <meta name="description" content="Manage your course syllabus, uploaded study materials, and revision topics in StudyPilot.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<div class="app-shell">
+
+  <!-- ======== SIDEBAR ======== -->
+  <nav class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7548FF"/><path d="M8 22L16 10L24 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18H21" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="10" r="2" fill="white"/></svg>
+      <span class="sidebar-logo-text">StudyPilot</span>
+    </div>
+    <ul class="sidebar-nav" role="list">
+      <li>
+        <a href="dashboard.html" class="sidebar-link" data-page="dashboard.html" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="courses.html" class="sidebar-link active" data-page="courses.html" aria-label="My Courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          My Courses
+        </a>
+      </li>
+      <li>
+        <a href="materials.html" class="sidebar-link" data-page="materials.html" aria-label="Study Materials">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Study Materials
+        </a>
+      </li>
+      <li>
+        <a href="ai-lab.html" class="sidebar-link" data-page="ai-lab.html" aria-label="AI Study Lab">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/><path d="M5 3v4"/><path d="M3 5h4"/><path d="M19 17v4"/><path d="M17 19h4"/></svg>
+          AI Study Lab
+          <span class="badge badge-primary" style="font-size:10px; padding:2px 6px; margin-left:auto; border-radius:12px;">AI</span>
+        </a>
+      </li>
+    </ul>
+    <div class="sidebar-bottom">
+      <a href="settings.html" class="sidebar-link" data-page="settings.html" aria-label="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======== TOPBAR ======== -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span class="topbar-workspace">Course Details</span>
+    </div>
+    <div class="topbar-right">
+      <a href="settings.html" class="topbar-profile-btn" aria-label="Go to settings and profile">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ======== MAIN ======== -->
+  <main class="main-content" id="course-main">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="courses.html">Courses</a>
+      <span class="breadcrumb-sep">/</span>
+      <span id="bc-course-name">Course</span>
+    </nav>
+
+    <!-- Course Header Banner -->
+    <div class="course-detail-header">
+      <div>
+        <div class="flex items-center gap-8 flex-wrap">
+          <h1 id="course-detail-name">Course name</h1>
+          <span id="course-detail-code" class="badge badge-primary"></span>
+        </div>
+        <div id="course-meta-pills" class="course-meta-pills"></div>
+      </div>
+      <button id="edit-course-btn" class="btn btn-ghost" aria-label="Edit course details">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Edit details
+      </button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-bar" role="tablist" aria-label="Course Sections">
+      <button class="tab-btn active" data-tab="syllabus" role="tab" aria-selected="true" id="tab-btn-syllabus">
+        Syllabus
+      </button>
+      <button class="tab-btn" data-tab="materials" role="tab" aria-selected="false" id="tab-btn-materials">
+        Study Materials
+      </button>
+      <button class="tab-btn" data-tab="topics" role="tab" aria-selected="false" id="tab-btn-topics">
+        Topics
+      </button>
+      <button class="tab-btn" data-tab="ai" role="tab" aria-selected="false" id="tab-btn-ai">
+        ✨ AI Assistant
+      </button>
+    </div>
+
+    <!-- ========================================================
+         TAB 1: SYLLABUS
+         ======================================================== -->
+    <div id="tab-syllabus" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-syllabus">
+
+      <!-- Upload mode toggle -->
+      <div class="syllabus-toggle" role="group" aria-label="Syllabus input method">
+        <button type="button" id="syl-toggle-upload" class="syllabus-toggle-btn active">PDF Upload</button>
+        <button type="button" id="syl-toggle-paste" class="syllabus-toggle-btn">Paste Text</button>
+      </div>
+
+      <!-- Upload Panel -->
+      <div id="syl-upload-panel">
+        <div id="syl-drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Upload syllabus PDF">
+          <div class="drop-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <p><strong>Drag and drop your syllabus PDF here</strong>, or <span class="text-primary-color font-semibold" id="syl-browse-btn" style="cursor:pointer">browse files</span></p>
+          <div class="drop-zone-hint">PDF up to 20 MB supported</div>
+          <input type="file" id="syl-file-input" accept=".pdf" class="hidden" aria-label="Select syllabus PDF">
+        </div>
+
+        <div id="syl-file-selected" class="file-selected-info mt-16" hidden>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span id="syl-file-name" class="font-semibold flex-1"></span>
+          <button type="button" id="syl-remove-file-btn" class="btn btn-ghost btn-sm" style="color:var(--danger)">Remove / Replace</button>
+        </div>
+      </div>
+
+      <!-- Paste Text Panel -->
+      <div id="syl-paste-panel" hidden>
+        <div class="form-group">
+          <label class="form-label" for="syl-text">Paste syllabus content or course outline</label>
+          <textarea id="syl-text" class="form-textarea" rows="12" placeholder="Paste your syllabus text, module lists, unit topics or lecture schedule here..."></textarea>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="flex items-center justify-between gap-12 mt-20 flex-wrap">
+        <button id="syl-save-btn" class="btn btn-primary">Save syllabus</button>
+        <button id="syl-generate-btn" class="btn btn-ghost" disabled title="Save a syllabus first">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Generate topics
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ========================================================
+         TAB 2: STUDY MATERIALS
+         ======================================================== -->
+    <div id="tab-materials" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-materials" hidden>
+
+      <!-- Upload Zone -->
+      <div id="materials-drop-zone" class="drop-zone mb-24" tabindex="0" role="button" aria-label="Upload study materials">
+        <div class="drop-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <p><strong>Drag & drop notes, lecture slides or handouts here</strong>, or <span class="text-primary-color font-semibold" id="materials-browse-btn" style="cursor:pointer">browse files</span></p>
+        <div class="drop-zone-hint">PDF, DOCX, PPTX, TXT, images up to 50 MB each</div>
+        <input type="file" id="materials-file-input" multiple class="hidden" aria-label="Select study materials">
+      </div>
+
+      <!-- Empty state -->
+      <div id="materials-empty" class="empty-state" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 40px 24px;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <h2>No study materials uploaded yet</h2>
+        <p>Upload lecture slides, past exams, or handwritten notes to keep them organized with this course.</p>
+      </div>
+
+      <!-- Materials Table -->
+      <div id="materials-table-wrap" class="materials-table-wrap card" style="display:none; padding:0; overflow:hidden">
+        <table class="materials-table" aria-label="Study materials table">
+          <thead>
+            <tr>
+              <th scope="col">File Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Size</th>
+              <th scope="col">Uploaded</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="materials-tbody"></tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ========================================================
+         TAB 3: TOPICS
+         ======================================================== -->
+    <div id="tab-topics" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-topics" hidden>
+
+      <!-- Status alerts -->
+      <div id="topics-status-row" class="mb-16">
+        <div id="topics-status-loading" class="status-indicator status-loading">
+          <div class="spinner" aria-hidden="true"></div>
+          <span>Analyzing syllabus content…</span>
+        </div>
+        <div id="topics-status-error" class="status-indicator status-error">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span class="status-msg"></span>
+        </div>
+        <div id="topics-status-saved" class="status-indicator status-success">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>All topics saved successfully.</span>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div id="topics-toolbar" class="topics-toolbar">
+        <button id="topics-add-btn" class="btn btn-ghost btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add topic
+        </button>
+        <button id="topics-merge-btn" class="btn btn-ghost btn-sm" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9l4-4 4 4M16 15l-4 4-4-4"/></svg>
+          Merge selected
+        </button>
+        <button id="topics-generate-btn" class="btn btn-ghost btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          Generate topics
+        </button>
+
+        <div class="topics-toolbar-right">
+          <button id="topics-cancel-btn" class="btn btn-ghost btn-sm">Discard</button>
+          <button id="topics-save-btn" class="btn btn-primary btn-sm">Save topics</button>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="topics-empty" class="empty-state" style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding: 48px 24px;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="1.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <h2>No topics created yet</h2>
+        <p>Break down this course into individual topics to plan and track your study progress.</p>
+        <div class="flex gap-12 mt-16 flex-wrap justify-center">
+          <button onclick="document.getElementById('topics-add-btn').click()" class="btn btn-primary">
+            + Add first topic
+          </button>
+        </div>
+      </div>
+
+      <!-- Topics Table -->
+      <div id="topics-table-wrap" class="card" style="display:none; padding:0; overflow-x:auto">
+        <table class="topics-table" aria-label="Course study topics">
+          <thead>
+            <tr>
+              <th scope="col" style="width:36px"></th>
+              <th scope="col">Topic Name</th>
+              <th scope="col" style="width:140px">Difficulty</th>
+              <th scope="col" style="width:120px">Est. Weightage</th>
+              <th scope="col" style="width:130px">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="topics-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="info-banner mt-16" style="font-size:12px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span>Estimated weightages and difficulties are study aids to guide time allocation, not official exam predictions.</span>
+      </div>
+
+    </div>
+
+    <!-- ========================================================
+         TAB 4: AI STUDY ASSISTANT
+         ======================================================== -->
+    <div id="tab-ai" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-ai" hidden>
+      
+      <!-- AI Quick Hero Banner -->
+      <div class="card mb-24 ai-glow-card" style="padding: 20px 24px;">
+        <div class="flex items-center justify-between gap-16 flex-wrap">
+          <div>
+            <div class="flex items-center gap-8 mb-4">
+              <h2 style="font-size:18px; margin:0; color:#1E1B4B;">Course AI Study Assistant</h2>
+              <span class="badge badge-ai">Gemini AI</span>
+            </div>
+            <p class="text-sm text-secondary" style="max-width:550px; margin:0;">
+              Generate revision notes or challenge yourself with instant multiple-choice quizzes created specifically for this course.
+            </p>
+          </div>
+          <a id="course-open-full-lab-btn" href="ai-lab.html" class="btn btn-ai btn-sm">
+            Launch Full AI Lab &nearr;
+          </a>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:24px;">
+        <!-- Column 1: Topic Quick Generators -->
+        <div>
+          <h3 style="font-size:15px; color:#4338CA; margin-bottom:12px;" class="flex items-center gap-6">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/></svg>
+            Topic AI Quick Actions
+          </h3>
+          <p class="text-xs text-secondary mb-12">Click Notes or Quiz next to any topic to generate instantly:</p>
+          <div id="course-ai-topics-pills" class="flex flex-col gap-8"></div>
+        </div>
+
+        <!-- Column 2: Saved Notes for this Course -->
+        <div>
+          <h3 style="font-size:15px; color:#4338CA; margin-bottom:12px;" class="flex items-center gap-6">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Saved Study Notes
+          </h3>
+          <p class="text-xs text-secondary mb-12">Previously generated study notes for this course:</p>
+          <div id="course-ai-saved-notes" class="flex flex-col gap-8"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- ======== EDIT COURSE MODAL ======== -->
+<div id="course-edit-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="course-edit-modal-title">
+  <div class="modal" style="max-width: 500px;">
+    <div class="modal-header">
+      <div>
+        <h2 id="course-edit-modal-title">Edit course</h2>
+        <p class="text-sm text-secondary">Update your course details.</p>
+      </div>
+      <button id="course-edit-modal-close" class="modal-close" aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <form id="course-edit-form" novalidate>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="edit-course-name">Course name <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="edit-course-name" class="form-input" required>
+          <span id="edit-course-name-error" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-course-code">Course code <span class="optional">(optional)</span></label>
+          <input type="text" id="edit-course-code" class="form-input">
+          <span id="edit-course-code-error" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="edit-course-exam-date">Exam date <span class="optional">(optional)</span></label>
+          <input type="date" id="edit-course-exam-date" class="form-input">
+          <span id="edit-course-exam-date-error" class="field-error"></span>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="edit-course-priority">Priority</label>
+            <select id="edit-course-priority" class="form-select">
+              <option value="medium">Medium priority</option>
+              <option value="high">High priority</option>
+              <option value="low">Low priority</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-course-difficulty">Difficulty</label>
+            <select id="edit-course-difficulty" class="form-select">
+              <option value="medium">Medium difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="course-edit-cancel" class="btn btn-ghost">Cancel</button>
+        <button type="submit" id="course-edit-submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/common.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/auth-preview.js"></script>
+<script src="js/ai-service.js"></script>
+<script src="js/syllabus.js"></script>
+<script src="js/materials.js"></script>
+<script src="js/topics.js"></script>
+<script src="js/course-details.js"></script>
+</body>
+</html>
