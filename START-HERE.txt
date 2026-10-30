@@ -1,0 +1,9 @@
+Muhammad Farhan Haroon | FA24-BSE-052
+
+1. Extract this ZIP.
+2. In VS Code: File > Open Folder > choose student-registration.
+3. Double-click index.html in File Explorer to run it in a browser.
+
+No installation or commands needed. Keep internet on for Bootstrap.
+Read VIVA-NOTES.md for simple explanations and practice questions.
+Edit index.html for content, style.css for appearance, script.js for validation.
